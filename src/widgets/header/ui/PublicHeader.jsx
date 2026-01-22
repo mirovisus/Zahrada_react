@@ -1,0 +1,108 @@
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import MobileOverlay from './MobileOverlay';
+
+const PublicHeader = () => {
+  const [
+    isMobileMenuOpen,
+    setIsMobileMenuOpen
+  ] = useState(false);
+
+  return (
+    <>
+      <header className = "header">
+        <div className = "header__inner container">
+          <nav className = "header__menu hidden-mobile">
+            <ul className = "header__menu-list">
+              <li className = "header__menu-item">
+                <Link
+                  className = "header__menu-link"
+                  to = "/"
+                >
+                  Domů
+                </Link>
+              </li>
+
+              <li className = "header__menu-item">
+                <Link
+                  className = "header__menu-link"
+                  to = "/offers"
+                >
+                  Aktuální nabídky
+                </Link>
+              </li>
+
+              <li className = "header__menu-item">
+                <Link
+                  className = "header__menu-link"
+                  to = "/application"
+                >
+                  Aplikace
+                </Link>
+              </li>
+            </ul>
+          </nav>
+
+          <button
+            className = "header__burger-menu burger-button visible-mobile"
+            type = "button"
+            onClick = {() => setIsMobileMenuOpen(true)}
+          >
+            <span className = "visually-hidden">Otevřít hlavní menu</span>
+          </button>
+
+          <Link className = "header__logo logo" to = "#hero">
+            <img
+              src = "/images/logo.svg"
+              alt = "Zahrada"
+              width = "99"
+              height = "21"
+              loading = "lazy"
+            />
+          </Link>
+
+          <div className = "header__actions hidden-mobile">
+            <ul className = "header__menu-list">
+              <li className = "header__menu-item">
+                <Link className = "header__menu-link" to = "/login">
+                  Přihlásit se
+                </Link>
+              </li>
+              <li className = "header__menu-item">
+                <Link className = "header__button button button--transparent" to = "/signup">
+                  Registrovat se
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <Link className = "icon-button visible-mobile" to="/login">
+            <svg
+              width = "24"
+              height = "24"
+              viewBox = "0 0 24 24"
+              fill = "none"
+              xmlns = "http://www.w3.org/2000/svg"
+            >
+              <path
+                d = "M6 17C6 17.93 6 18.395 6.10222 18.7765C6.37962 19.8117 7.18827 20.6204 8.22354 20.8978C8.60504 21 9.07003 21 10 21H16.2C17.8802 21 18.7202 21 19.362 20.673C19.9265 20.3854 20.3854 19.9265 20.673 19.362C21 18.7202 21 17.8802 21 16.2V7.8C21 6.11984 21 5.27976 20.673 4.63803C20.3854 4.07354 19.9265 3.6146 19.362 3.32698C18.7202 3 17.8802 3 16.2 3H10C9.07003 3 8.60504 3 8.22354 3.10222C7.18827 3.37962 6.37962 4.18827 6.10222 5.22354C6 5.60504 6 6.07003 6 7M12 8L16 12M16 12L12 16M16 12H3"
+                stroke = "currentColor"
+                strokeWidth = "1.4"
+                strokeLinecap = "round"
+                strokeLinejoin = "round"
+              />
+            </svg>
+            <span className = "visually-hidden">Přihlásit se</span>
+          </Link>
+        </div>
+      </header>
+
+      <MobileOverlay
+        isOpen={isMobileMenuOpen}
+        onClose={() => setIsMobileMenuOpen(false)}
+      />
+    </>
+  )
+}
+
+export default PublicHeader;
