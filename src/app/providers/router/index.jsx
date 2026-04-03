@@ -11,11 +11,11 @@ import ProfilePage from '@pages/profile/ui/ProfilePage';
 import { GardenCreatePage } from '@pages/garden-create';
 import { GardenEditPage } from '@pages/garden-edit';
 import { HomePage } from '@pages/home';
+import { ApplicationPage } from '@pages/application';
 
 import ProtectedRoute from './ProtectedRoute'
 
 // Dočasné placeholder stránky
-const ApplicationPage = () => <div className="container"><h1>Aplikace (TODO)</h1></div>;
 const OffersPage = () => <div className="container"><h1>Aktuální nabídky (TODO)</h1></div>;
 
 export const router = createBrowserRouter([
